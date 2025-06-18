@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gráfico de Desigualdades</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #plot { width: 100%; height: 600px; }
+  </style>
+</head>
+<body>
+  <h2>Gráfico de Región Factible - Desigualdades</h2>
+  <p>Desigualdades graficadas:<br>
+    x + y ≤ 5<br>
+    x ≥ 0<br>
+    y ≥ 0
+  </p>
+  <div id="plot"></div>
+
+  <script>
+    // Definimos puntos extremos de la región factible
+    const x = [0, 0, 5, 0]; // puntos (0,0), (0,5), (5,0)
+    const y = [0, 5, 0, 0];
+
+    const regionFactible = {
+      x: x,
+      y: y,
+      fill: "toself",
+      fillcolor: "rgba(0, 200, 0, 0.3)",
+      line: { color: "green" },
+      type: "scatter",
+      mode: "lines",
+      name: "Región Factible"
+    };
+
+    // Línea de x + y = 5
+    const linea1 = {
+      x: [0, 5],
+      y: [5, 0],
+      mode: "lines",
+      line: { color: "red", dash: "dash" },
+      name: "x + y = 5"
+    };
+
+    // Ejes y límites
+    const layout = {
+      title: "Solución Gráfica de Desigualdades",
+      xaxis: { title: "x", range: [-1, 6], zeroline: true },
+      yaxis: { title: "y", range: [-1, 6], zeroline: true },
+      showlegend: true
+    };
+
+    Plotly.newPlot("plot", [regionFactible, linea1], layout);
+  </script>
+</body>
+</html>
